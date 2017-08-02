@@ -28,13 +28,66 @@ if ($_GET['type'] == 'residential') {
         $query
     );
     foreach ($results as $result) {
-//        if (!$done) {
-//            $done = true;
-//            continue;
-//        }
-//        header('Content-Type: application/json');
-//        echo $result->toJson();
-//        die();
+        $listing = [
+            'title' => $result->get('LIST_79'),
+            'description' => $result->get('LIST_78'),
+            'list_price' => $result->get('LIST_22'),
+            'address' => "{$result->get('LIST_31')} {$result->get('LIST_34')} {$result->get('LIST_37')}\r\n {$result->get('LIST_39')}, FL {$result->get('LIST_43')}",
+            'photo_urls' => [],
+        ];
+        $id = $result->get('LIST_1');
+        $photos = $rets->GetObject("Property", "Photo", $id, "*", 1);
+        foreach ($photos as $photo) {
+            $listing['photo_urls'][] = $photo->getLocation();
+        }
+        $listings[] = $listing;
+    }
+    $results = $rets->Search(
+        'Property',
+        'B',
+        $query
+    );
+    foreach ($results as $result) {
+        $listing = [
+            'title' => $result->get('LIST_79'),
+            'description' => $result->get('LIST_78'),
+            'list_price' => $result->get('LIST_22'),
+            'address' => "{$result->get('LIST_31')} {$result->get('LIST_34')} {$result->get('LIST_37')}\r\n {$result->get('LIST_39')}, FL {$result->get('LIST_43')}",
+            'photo_urls' => [],
+        ];
+        $id = $result->get('LIST_1');
+        $photos = $rets->GetObject("Property", "Photo", $id, "*", 1);
+        foreach ($photos as $photo) {
+            $listing['photo_urls'][] = $photo->getLocation();
+        }
+        $listings[] = $listing;
+    }
+    $results = $rets->Search(
+        'Property',
+        'C',
+        $query
+    );
+    foreach ($results as $result) {
+        $listing = [
+            'title' => $result->get('LIST_79'),
+            'description' => $result->get('LIST_78'),
+            'list_price' => $result->get('LIST_22'),
+            'address' => "{$result->get('LIST_31')} {$result->get('LIST_34')} {$result->get('LIST_37')}\r\n {$result->get('LIST_39')}, FL {$result->get('LIST_43')}",
+            'photo_urls' => [],
+        ];
+        $id = $result->get('LIST_1');
+        $photos = $rets->GetObject("Property", "Photo", $id, "*", 1);
+        foreach ($photos as $photo) {
+            $listing['photo_urls'][] = $photo->getLocation();
+        }
+        $listings[] = $listing;
+    }
+    $results = $rets->Search(
+        'Property',
+        'F',
+        $query
+    );
+    foreach ($results as $result) {
         $listing = [
             'title' => $result->get('LIST_79'),
             'description' => $result->get('LIST_78'),
@@ -53,6 +106,26 @@ if ($_GET['type'] == 'residential') {
     $results = $rets->Search(
         'Property',
         'E',
+        $query
+    );
+    foreach ($results as $result) {
+        $listing = [
+            'title' => $result->get('LIST_79'),
+            'description' => $result->get('LIST_78'),
+            'list_price' => $result->get('LIST_22'),
+            'address' => "{$result->get('LIST_31')} {$result->get('LIST_34')} {$result->get('LIST_37')}\r\n {$result->get('LIST_39')}, FL {$result->get('LIST_43')}",
+            'photo_urls' => [],
+        ];
+        $id = $result->get('LIST_1');
+        $photos = $rets->GetObject("Property", "Photo", $id, "*", 1);
+        foreach ($photos as $photo) {
+            $listing['photo_urls'][] = $photo->getLocation();
+        }
+        $listings[] = $listing;
+    }
+    $results = $rets->Search(
+        'Property',
+        'D',
         $query
     );
     foreach ($results as $result) {
